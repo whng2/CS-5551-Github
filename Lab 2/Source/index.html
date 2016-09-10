@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/manual.css" rel="stylesheet"> 
+    
+<script>
+    function LoginController($scope) {
+    
+    $scope.logins = [];
+    $scope.login = function (user, pwd) {
+       if (user==localStorage.getItem("name") && pwd==localStorage.getItem("password"))
+         {
+       window.location.assign("Home.html");
+            }
+            else{
+                $("#login_feedback").html("Invalid username or password");
+            }
+    };
+}
+    
+</script>
+   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+    <title>Login Page</title>
+</head>
+
+
+<body>
+<div align="center">
+   <br/><br/>
+   <br/><br/>
+
+
+    <div ng-app ng-controller="LoginController">
+    
+    
+   <div class="input">
+        Username: <input ng-model="user.firstName"></input>
+    <br/><br/>
+    Password: <input ng-model="user.pwd" type="password"></input>
+    <br/><br/>
+    <input type="submit" ng-click="login(user.firstName, user.pwd)" value="Login"></input>
+    <br/><br/>
+</div>   
+    <div id="login_feedback"></div>
+</div>
+
+      <p>New user? <a href="create.html">Register</a></p>
+    </div>
+</body>
+
+
+</html>
