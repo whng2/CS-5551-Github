@@ -16,7 +16,7 @@
     width: 650px;
     height: 450px;
 }
-                    .weatherModule {
+.weatherModule {
     background:#f2f2f2;
     height:150px;
     width:250px;
@@ -37,31 +37,30 @@
     margin: 0 .75em;
 }
         
-        
-    </style>
-
+</style>
 
 
 
 
 <script>
-
-
-
-var map=angular.module('GoogleDirection', []);
-    map.controller('googlemapoutput', function ($scope) {
+ var map=angular.module('GoogleDirection', []);
+ map.controller('googlemapoutput', function ($scope) {
 
     var map;
     var mapOptions;
-    var directionsDisplay = new google.maps.DirectionsRenderer({
+    var directionsDisplay = new google.maps.DirectionsRenderer
+    ({
         draggable: true
     });
     var directionsService = new google.maps.DirectionsService();
 
 
-    $scope.initialize = function () {
-          var pos = new google.maps.LatLng(0, 0); 
-          var mapOptions = {
+
+    $scope.initialize = function ()
+    {
+          var pos = new google.maps.LatLng(0, 0);
+          var mapOptions =
+            {
                 zoom: 3,
                 center: pos
             };
@@ -69,31 +68,35 @@ var map=angular.module('GoogleDirection', []);
             map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
      };
-    $scope.calcRoute = function () {
-       var end = document.getElementById('endlocation').value;
-            var start = document.getElementById('startlocation').value;
 
-            var request = {
+
+    $scope.calcRoute = function ()
+    {
+       var end = document.getElementById('endlocation').value;
+       var start = document.getElementById('startlocation').value;
+       var request =
+            {
                 origin: start,
                 destination: end,
                 travelMode: google.maps.TravelMode.DRIVING
             };
 
-            directionsService.route(request, function (response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setMap(map);
-                    directionsDisplay.setDirections(response);
-                    console.log(status);
-                }
+                directionsService.route
+                (
+                        request, function (response, status)
+                    {
+                        if (status == google.maps.DirectionsStatus.OK)
+                    {
+                        directionsDisplay.setMap(map);
+                        directionsDisplay.setDirections(response);
+                        console.log(status);
+                    }
            
-        });
+                    }
+                );
     };
-
-
     google.maps.event.addDomListener(window, 'load', $scope.initialize);
-
 });
-
 
 
 
@@ -103,23 +106,26 @@ var weather=angular.module('weather', []);
 weather.controller('weatherctrl', function ($scope, $http)
 {
 
-$scope.getWeather = function() {
+
+$scope.getWeather = function()
+{
     
 var start = document.getElementById('startlocation').value;
 var end = document.getElementById('endlocation').value;
-    
+
 
 
 $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+start+'.json').success(function(data) {
       console.log(data);
-          temp = data.current_observation.temp_f;
-                icon = data.current_observation.icon_url;
-                weather = data.current_observation.weather;
-             console.log(temp);
-                $scope.startweather = {html:"Currently " +temp +" &deg; F and " + weather + ""}
-                $scope.startIcon=  {html:"<img src='" + icon  +"'/>"}
+      temp = data.current_observation.temp_f;
+      icon = data.current_observation.icon_url;
+      weather = data.current_observation.weather;
+      console.log(temp);
+      $scope.startweather = {html:"Currently " +temp +" &deg; F and " + weather + ""}
+      $scope.startIcon=  {html:"<img src='" + icon  +"'/>"}
                      
 })
+
 
 $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+end+'.json').success(function(data) {
       console.log(data);
@@ -131,32 +137,28 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
                 $scope.endIcon=  {html:"<img src='" + icon  +"'/>"}
                      
 })
-
 }
-    
 });
-    
-    angular.module("CombineModule",["GoogleDirection","weather"]);
+
+
+ angular.module("CombineModule",["GoogleDirection","weather"]);
+
 </script>
 </head>
 
 
 
-
-
-
-
 <body>
+    <div class="wrapp" ng-controller="googlemapoutput">
 
-<div class="wrapp" ng-controller="googlemapoutput">
          <div class="row">
                 <input type="text"  ng-model="startlocation" id="startlocation"/>
                 <input type="text"  ng-model="endlocation" id="endlocation" /> 
                 <button id="btn" ng-click="calcRoute()">
                     Get Direction
                 </button>
-                 <br/></br>
-            </div>
+                <br/></br>
+         </div>
             <div id="map-canvas" style="height: 400px;"></div>
         <br>
 
@@ -165,28 +167,29 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
 
 
 
-
-    <div  ng-app="weather" ng-controller="weatherctrl">
-
-
+        
+     <div  ng-app="weather" ng-controller="weatherctrl">
         <button id="btn" ng-click="getWeather()"> Show Weather </button><br/><br/>
+
+
+
 
         <p>Weather of {{startlocation}}</p>
         <div class="weatherModule">
-            <p class="currentConditions" ng-bind-html-unsafe="startweather.html"></p>
-            <div class="currentIcon" ng-bind-html-unsafe="startIcon.html"></div>
+        <p class="currentConditions" ng-bind-html-unsafe="startweather.html"></p>
+        <div class="currentIcon" ng-bind-html-unsafe="startIcon.html"></div>
         </div>
 
         <p>Weather of {{endlocation}}</p>
         <div class="weatherModule">
-            <p class="currentConditions" ng-bind-html-unsafe="endweather.html"></p>
-            <div class="currentIcon" ng-bind-html-unsafe="endIcon.html"></div>
+        <p class="currentConditions" ng-bind-html-unsafe="endweather.html"></p>
+        <div class="currentIcon" ng-bind-html-unsafe="endIcon.html"></div>
         </div>
-
-    </div>
+     </div>
 
 
 </div>
-
 </body>
+
+
 </html>
