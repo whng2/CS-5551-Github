@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "40324621992",
+    "project_id": "e-glazing-144005"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40324621992:android:2f0e9833d95578d6",
+        "android_client_info": {
+          "package_name": "whng2.lab4test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40324621992-rpb5lsmd6nv8f5h44l4p8bn4hce91ig4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "whng2.lab4test",
+            "certificate_hash": "B4DD4B4A9AB322AE8621AD19E392B231C17D7BAD"
+          }
+        },
+        {
+          "client_id": "40324621992-afogohuhq8rls64ptjg0no9vnievheeu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkaFlCgAbK0z9R1K0mUUMSnJs8HYHZAV4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
