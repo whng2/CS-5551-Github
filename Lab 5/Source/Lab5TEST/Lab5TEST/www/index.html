@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+      
+      
+      
+      <!-- ionic/angularjs js -->
+<script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+<script src="lib/ng-twitter-api/dist/ng-twitter-api.min.js"></script>
+<script src="lib/sha1.js"></script>
+<script src="../bower_components/jsSHA/src/sha1.js"></script>
+<!-- cordova script (this will be a 404 during development) -->
+  
+  </head>
+    
+    
+    
+    
+    
+  <html ng-app="starter">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>Sign-in, Then Tabs Example</title>
+
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  </head>
+
+      
+      
+      
+      
+  <body ng-app="starter">
+    
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button class="button-icon ion-arrow-left-c">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+             
+    <ion-nav-view></ion-nav-view>
+
+    <script id="templates/sign-in.html" type="text/ng-template">
+      <ion-view view-title="Sign-In">
+        <ion-content>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Username</span>
+              <input type="text" ng-model="user.username">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Password</span>
+              <input type="password" ng-model="user.password">
+            </label>
+          </div>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-click="signIn(user)">
+              SignIn
+            </button>
+            <p class="text-center">
+              <a href="#/forgot-password">Forgot password</a>
+            </p>
+          </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script id="templates/forgot-password.html" type="text/ng-template">
+      <ion-view view-title="Forgot Password">
+        <ion-content padding="true">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Enter your Email</span>
+              <input type="text" ng-model="user.username">
+            </label>
+	  </div>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-click="signIn(user)">
+              Submit
+            </button>
+          <p>
+            Return to <a href="#/sign-in">Sign-In</a>.
+          </p>
+        </ion-content>
+      </ion-view>
+    </script>
+    
+    <script id="templates/tabs.html" type="text/ng-template">
+      <ion-view>
+        <ion-tabs class="tabs-icon-top tabs-positive">
+
+          <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+            <ion-nav-view name="home-tab"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Gallery" icon="ion-ios-information" href="#/tab/Gallery">
+            <ion-nav-view name="Gallery-tab"></ion-nav-view>
+          </ion-tab>
+
+          <ion-tab title="Sign-Out" icon="ion-log-out" href="#/sign-in">
+          </ion-tab>
+
+        </ion-tabs>
+      </ion-view>
+    </script>
+
+    <script id="templates/home.html" type="text/ng-template">
+      <ion-view view-title="Home">
+        <ion-content padding="true">
+          <p>
+          This is a gallery and a Tweeter message API that can collect pictures. You will get a list of sites from where you can connect your pics like google, twitter, instgram photo. Also, tweets can be upload to personal tweeter account</p>
+        </ion-content>
+      </ion-view>
+    </script>
+
+
+      
+      
+      
+    <script id="templates/Gallery.html" type="text/ng-template">
+ <ion-view view-title="Gallery">
+        <ion-content ng-controller="ExampleController" ng-init="loadImages()">
+          <div class="row" ng-repeat="image in images" ng-if="$index %4 === 0">
+             <div class="col col-25" ng-if="$index < images.length">
+             <img ng-src="{{images[$index].src}}" width="100%" /> 
+             </div>
+              <div class="col col-25" ng-if="$index + 1 < images.length">
+             <img ng-src="{{images[$index+1].src}}" width="100%" /> 
+             </div>
+              <div class="col col-25" ng-if="$index + 2 < images.length">
+             <img ng-src="{{images[$index+2].src}}" width="100%" /> 
+             </div>
+              <div class="col col-25" ng-if="$index + 3 < images.length">
+             <img ng-src="{{images[$index+3].src}}" width="100%" /> 
+             </div>
+          </div>
+         </ion-content>
+    </ion-view>
+
+
+            
+            
+      
+    <ion-header-bar class="bar-positive">
+    <h1 class="title">My Twitter Feed</h1>
+    </ion-header-bar>  
+
+
+    <ion-view>
+    <ion-content class="has-header padding">
+      <div class="list">
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="My tweet..." ng-model="tweet.message" ng-maxlength="140">
+          </label>
+          <button class="button button-small" ng-click="submitTweet()">
+            Tweet
+          </button>
+        </div>
+
+      </div>
+      <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+      <div ng-show="home_timeline.length == 0">Loading tweets...</div>
+
+      <div ng-repeat="entry in home_timeline" class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{entry.user.profile_image_url}}"/>
+          <h2>{{entry.user.name}}</h2>
+          <p>{{correctTimestring(entry.created_at) | date:'medium'}}</p>
+        </div>
+
+        <div class="item item-body">
+          <p ng-bind-html="entry.text"></p>
+          <img ng-if="entry.extended_entities" ng-src="{{ entry.extended_entities.media[0].media_url }}" style="width: 100%;"/>
+        </div>
+      </div>
+    </ion-content>
+    </ion-view>   
+      </script>  
+  </body> 
+</html>
+<script src="js/app.js"></script>
