@@ -78,32 +78,26 @@ imageApp.controller("SecureController", function($scope, $ionicHistory, $ionicAc
    //Called when button is clicked
 	$scope.showActionsheet = function() {
 	
-$ionicActionSheet.show({
-	titleText: 'ActionSheet Example'
-});
-        
-        
-        
-$ionicActionSheet.show({
-	cancelText: 'Cancel',
-	cancel: function() {
-		console.log('CANCELLED');
-    }
-});
-        
-        
-$ionicActionSheet.show({
-	destructiveText: 'Delete',
+$ionicActionSheet.show
+({
+    titleText: 'ActionSheet Example',
+    
+    
+    cancelText: 'Cancel',
+	cancelclicked: function() {
+    console.log('CANCELLED')
+    return true;
+    },
+    
+    
+    destructiveText: 'Delete',
 	destructiveButtonClicked: function() {
         //Do Stuff
         return true; //Close the model?
-    }
-});
-        
-        
-
-$ionicActionSheet.show
-({
+    },
+    
+    
+    
 	buttons: [
         { text: 'Share' }, //Index = 0
         { text: '<i class="icon ion-arrow-move"></i> Move' },], //Index = 1
