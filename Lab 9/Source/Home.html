@@ -132,7 +132,6 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
 });
     angular.module("CombineModule",["GoogleDirection","weather"]);
 </script>
-    </head>
 
 
     <body>
@@ -149,12 +148,10 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
         <br>
 
 
-
-
         <div  ng-app="weather" ng-controller="weatherctrl">
 
 
-            <button id="btn" ng-click="getWeather()"> Show Weather </button><br/><br/>
+            <button id="bttn" ng-click="getWeather()"> Show Weather </button><br/><br/>
 
 
             <p>Weather of {{startlocation}}</p>
@@ -162,8 +159,6 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
                 <p class="currentConditions" ng-bind-html-unsafe="startweather.html"></p>
                 <div class="currentIcon" ng-bind-html-unsafe="startIcon.html"></div>
             </div>
-
-
 
             <p>Weather of {{endlocation}}</p>
             <div class="weatherModule">
@@ -176,6 +171,7 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
 
 
     </div>
+    </head>
 
     </body>
     </html>
