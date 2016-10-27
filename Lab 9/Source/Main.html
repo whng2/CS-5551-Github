@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html lang="" ng-app="CombineModule">
 <head>
-  <meta t="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+    <meta t="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
     <script src="js/angular.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhSE1HAi753_M8rcFTfcbBXUQInf8y6c&v=3.exp&sensor=true"></script>
-  <link rel="stylesheet" href="css/main.css">  
-    
+    <link rel="stylesheet" href="css/main.css">
+
     <style>
      #map-canvas {
     width: 650px;
@@ -36,15 +36,10 @@
     float: left;
     margin: 0 .75em;
 }
-        
-        
+
+
     </style>
-
-
-<script>
-
-
-
+    <script>
 var map=angular.module('GoogleDirection', []);
     map.controller('googlemapoutput', function ($scope) {
 
@@ -57,7 +52,7 @@ var map=angular.module('GoogleDirection', []);
 
 
     $scope.initialize = function () {
-          var pos = new google.maps.LatLng(0, 0); 
+          var pos = new google.maps.LatLng(0, 0);
           var mapOptions = {
                 zoom: 3,
                 center: pos
@@ -82,7 +77,7 @@ var map=angular.module('GoogleDirection', []);
                     directionsDisplay.setDirections(response);
                     console.log(status);
                 }
-           
+
         });
     };
 
@@ -101,10 +96,10 @@ weather.controller('weatherctrl', function ($scope, $http)
 {
 
 $scope.getWeather = function() {
-    
+
 var start = document.getElementById('startlocation').value;
 var end = document.getElementById('endlocation').value;
-    
+
 
 
 $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+start+'.json').success(function(data) {
@@ -115,7 +110,7 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+st
              console.log(temp);
                 $scope.startweather = {html:"Currently " +temp +" &deg; F and " + weather + ""}
                 $scope.startIcon=  {html:"<img src='" + icon  +"'/>"}
-                     
+
 })
 
 $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+end+'.json').success(function(data) {
@@ -126,7 +121,7 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
              console.log(temp);
                 $scope.endweather = {html:"Currently " +temp +" &deg; F and " + weather + ""}
                 $scope.endIcon=  {html:"<img src='" + icon  +"'/>"}
-                     
+
 })
 }
 });
@@ -137,33 +132,29 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
 
 <body>
 <div class="wrapp" ng-controller="googlemapoutput">
-         <div class="row">
-                <input type="text"  ng-model="startlocation" id="startlocation"/>
-                <input type="text"  ng-model="endlocation" id="endlocation" /> 
-                <button id="btn" ng-click="calcRoute()">
-                    Get Direction
-                </button>
-                 <br/></br>
-            </div>
-            <div id="map-canvas" style="height: 400px;"></div>
-        <br>
+
+    <div class="row">
+        <input type="text"  ng-model="startlocation" id="startlocation"/>
+        <input type="text"  ng-model="endlocation" id="endlocation" />
+        <button id="btn" ng-click="calcRoute()">
+            Get Direction
+        </button>
+        <br/></br>
+    </div>
 
 
+    <div id="map-canvas" style="height: 400px;"></div>
+    <br>
 
 
     <div  ng-app="weather" ng-controller="weatherctrl">
-
-
-        <button  id="btn" ng-click="getWeather()"> Show Weather </button><br/><br/>
-
+        <button id="btnn" ng-click="getWeather()"> Show Weather </button><br/><br/>
 
         <p>Weather of {{startlocation}}</p>
         <div class="weatherModule">
             <p class="currentConditions" ng-bind-html-unsafe="startweather.html"></p>
             <div class="currentIcon" ng-bind-html-unsafe="startIcon.html"></div>
         </div>
-
-
 
         <p>Weather of {{endlocation}}</p>
         <div class="weatherModule">
@@ -176,6 +167,5 @@ $http.get('http://api.wunderground.com/api/36b799dc821d5836/conditions/q/MO/'+en
 
 
 </div>
-
 </body>
 </html>
