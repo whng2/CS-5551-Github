@@ -4,7 +4,7 @@ var bcrypt=require('bcrypt');
 var mongoose_delete = require('mongoose-delete');
 var SALT_WORK_FACTOR = 10;
 
-var db="mongodb://ase10:naren539@ds141937.mlab.com:41937/lab10";
+var db="mongodb://whng2:Kejian870923@ds057476.mlab.com:57476/whng2";
 //var db = "mongodb://localhost:27017/test";
 
 mongoose.Promise = global.Promise;
