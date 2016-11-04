@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,6 @@
                            <th>Full Name</th>
                            <th>Email</th>
                            <th>Username</th>
-                           <th>Age</th>
                            </tr>
                            </thead>
     <tbody>
@@ -33,7 +33,6 @@
         <td><%=users[i].name%></td>
         <td><%=users[i].email%></td>
         <td><%=users[i].username%></td>
-        <td><%=users[i].age%></td>
       </tr>
     </tbody>
     <% } %>
@@ -48,11 +47,46 @@
   <% if( typeof(errorMessage) !== 'undefined' ) {%>
   <h5 align="center" class="margin-base-vertical"><code><%=errorMessage%></code></h5>
   <%}%><br/>
+
+
 <input type="text" class="form-control input-lg" name="name" placeholder="Full name" required> <br/>
-<button class="btn btn-danger"> delete </button>
+
+
+<button class="btn btn-info"> Delete!</button>
 </form>
+
+
+
+
+
+<form class="form-group" method="post" action="/update" align="center">
+  <% if( typeof(errorMessage) !== 'undefined' ) {%>
+  <h5 align="center" class="margin-base-vertical"><code><%=errorMessage%></code></h5>
+  <%}%><br/>
+
+
+
+<input type="text" class="form-control input-lg" name="name" placeholder="Full name" required> <br/>
+
+
+
+<input type="email" class="form-control input-lg" name="email" placeholder="Email" required><br/>
+
+
+
+    <input type="text" class="form-control input-lg" name="username" placeholder="username" required> <br/>
+
+
+<button class="btn btn-info" > Update now! </button>
+</form>
+
+
+
+
+
+
 <br/><br/>
-<p><b><a href="/logout"> click here to logout.</a></b></p><br/>
+<p><b><a href="/logout"> Logout! </a></b></p><br/>
 
 
 
@@ -65,7 +99,7 @@
 
     </div>
     <% include partials/Footer.ejs %>
-    </script>
+    </body>
 
 </body>
 

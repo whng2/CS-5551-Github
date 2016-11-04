@@ -4,7 +4,7 @@
 <head>
 <title>Login page</title>
 <% include partials/Head.ejs %>
-<div class="page-header" align="center">Login:</div>
+<div class="page-header" align="center">Login</div>
 </head>
 
 <body>
@@ -19,25 +19,30 @@
 				 <code><%=errorMessage%></code>
 			 </div>
 			 <%}%>
+
+
                 <p class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="email" class="form-control input-lg" name="email" placeholder="Username/email" required>
+                <input type="email" class="form-control input-lg" name="email" placeholder="Email" required>
               </p>
+                  </br>
+
+
               <p class="input-group">
               <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
               <input type="password" class="form-control input-lg" name="password" placeholder="password" required>
             </p>
             <br>
-
-            <button class="btn btn-primary" type="submit" action="">LOGIN</button>
-            <button class="btn btn-danger" type="reset" action="">Reset</button>
+                  </br>
+            <h4><button class="btn btn-info" type="submit" action="">Login</button></h4>
+                    <h4><button class="btn btn-info" type="reset" action="">Rest</button></h4>
               </form>
               <div class="margin-base-vertical">
-					<h6 align="center">Do you have account? <a href="/register">Create new user!</a></h6>
+					<h6 align="center"> <a href="/register"> Don't have a account?</a></h6>
 				</div>
             <br/>
 				<div align="center">
-	 			 <a href="/login">HomePage</a>
+	 			 <a href="/login">Home </a>
 	 		 </div>
 			 <br/>
 
