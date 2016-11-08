@@ -24,17 +24,18 @@ app.use(session({secret:"bfdddmsiiqiobcxnkallaowjsnxmk", resave: true, saveUnini
 
 app.get('/',route.login);
 
-app.post('/newUser',user.regUser);
-app.get('/register', route.reg);
+app.post('/user',user.regUser);
+app.get('/registration', route.reg);
 app.get('/login',route.login);
 app.get('/users', user.search);
 app.post('/authenticate',user.login);
 app.post('/delete', user.deleteUser);
-app.put('/update',user.updateUser);
+// app.put('/update',user.updateUser);
 app.get('/logout',route.logout);
-//app will run on this port number on localhost.
 var port = process.env.PORT || 8080;
 
 var server = app.listen(port, function(req,res){
      console.log(chalk.blue("server started on port:"+port));
 })
+
+

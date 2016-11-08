@@ -5,8 +5,8 @@ var chalk = require('chalk');
 exports.search = function(req,res){
   User.find({}, function(err, user){
     console.log(user);
-  res.render('Home',{session:req.session, users:user});
-  console.log('welcome to Home page');
+    res.render('Home',{session:req.session, users:user});
+    console.log('welcome to Home page');
   });
 
 }
@@ -21,10 +21,10 @@ exports.updateUser = function(req,res){
     }
     else{
       User.find({},function(err, result){
-      console.log("update sucess");
-      console.log(result);
-      res.render('Home',{users:result});
-    });
+        console.log("update sucess");
+        console.log(result);
+        res.render('Home',{users:result});
+      });
     }
   });
 
@@ -59,27 +59,25 @@ exports.regUser= function(req,res) {
   var email = req.body.email;
   var password = req.body.password;
   var cnf_pwd = req.body.cnf_password;
-  var age = req.body.age;
 
-  var newUser = new User();
-  newUser.name = name;
-  newUser.username = username;
-  newUser.email = email;
-  newUser.password = password;
-  newUser.cnf_pwd = cnf_pwd;
-  newUser.age = age;
+  var user = new User();
+  user.name = name;
+  user.username = username;
+  user.email = email;
+  user.password = password;
+  user.cnf_pwd = cnf_pwd;
 
-  newUser.save(function(err,user) {
+  user.save(function(err,user) {
     if(err){
-      console.log("User with this username already exists.");
+      console.log("User already exists.");
       var error = 'Please select different username or email';
       res.render('Register',{errorMessage:error});
       return;
     }
     else{
-      console.log("User regitered successfully.");
-      req.session.newUser = user.username;
-      res.render('Welcome',{session:req.session});
+      console.log("User registration successfully.");
+      req.session.user = user.username;
+      // res.render('Welcome',{session:req.session});
     }
 
   });

@@ -4,65 +4,57 @@
 <head>
 <title>Register Here!!</title>
 <% include partials/Head.ejs %>
-<h15><div class="page-header" align="center">Registration page </div> </h15>
+<h15><div style="color:#0000FF" class="page-header" align="center">Welcome to my CS 5551 registration page! </div> </h15>
 </head>
 
 <body>
 <div class="wrapper">
    <div class="container-fluid">
       <div class="row">
-          <div class="col-md-4 col-md-offset-4 panel panel-default">
 
-              <form class="form-group" method="post" action="/newUser" align="center">
+              <form class="form-group" method="post" action="/User" align="center">
 
                   <% if( typeof(errorMessage) !== 'undefined' ) {%>
 						 <h5 align="center" class="margin-base-vertical"><code><%=errorMessage%></code></h5>
        	 <%}%>
          <p class="input-group">
-              <span class="input-group-addon">  <span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" class="form-control input-lg" name="name" placeholder="Full name" required>
+              <span class="input-group-addon">  <span class="glyphicon glyphicon-cloud"></span></span>
+                <input type="text" class="form-control input-lg" name="name" placeholder="Last Name" required>
               </p>
                   <br>
 
               <p class="input-group">
-            <span class="input-group-addon">  <span class="glyphicon glyphicon-user"></span></span>
-              <input type="text" class="form-control input-lg" name="username" placeholder="username" required>
+            <span class="input-group-addon">  <span class="glyphicon glyphicon-cloud"></span></span>
+              <input type="text" class="form-control input-lg" name="username" placeholder="userName" required>
             </p>
                   <br>
                 <p class="input-group">
-              <span class="input-group-addon">  <span class="glyphicon glyphicon-envelope"></span></span>
+              <span class="input-group-addon">  <span class="glyphicon glyphicon-cloud"></span></span>
                 <input type="email" class="form-control input-lg" name="email" placeholder="Email" required>
               </p>
                   <br>
               <p class="input-group">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-              <input type="password" class="form-control input-lg" name="password" placeholder="password" required>
+              <span class="input-group-addon"><span class="glyphicon glyphicon-cloud"></span></span>
+              <input type="password" class="form-control input-lg" name="password" placeholder="Password" required>
             </p>
                   <br>
             <p class="input-group">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-            <input type="password" class="form-control input-lg" name="cnf_password" placeholder="confirm password" required>
-          </p>
-                  <br>
-          <!--<p class="input-group">-->
-          <!--<span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>-->
-          <!--<input type="number" class="form-control input-lg" name="age" placeholder="age" required>-->
-        <!--</p>-->
-          <br/>
-                  <div align="center">
-            <h5><button class="btn btn-info" type="submit" action="">Register</button></h5>
-                  <h5> <button class="btn btn-info" type="reset" action="">Reset</button><h5>
-              </form>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-cloud"></span></span>
+            <input type="password" class="form-control input-lg" name="cnf_password" placeholder="Please confirm your password again!" required>
+            </p>
+
+
+             <div align="center">
+            <h5><button class="btn btn-info" type="submit" action=" ">Register</button> &nbsp&nbsp&nbsp <button class="btn btn-info" type="reset" action="">Reset</button></h5>
             <br/>
-              <br>
+
 
                     <a href="/">Home</a>
 	 		 </div>
 			 <br/>
-
-          </div>
-     </div>
-  </div>
+<div>
+    <div>
+    </div>
 </div>
 <% include partials/Footer.ejs %>
 </body>
