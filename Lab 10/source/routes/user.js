@@ -10,26 +10,7 @@ exports.search = function(req,res){
   });
 
 }
-exports.updateUser = function(req,res){
-  var name = req.body.name;
-  var age = req.body.age;
-  var username = req.body.username;
-  User.update({name:name},{age:age,username:username},function(err, success){
-    if(err){
-      console.log("Update unsuccess.");
-      return res.status(400).send();
-    }
-    else{
-      User.find({},function(err, result){
-        console.log("update sucess");
-        console.log(result);
-        res.render('Home',{users:result});
-      });
-    }
-  });
 
-
-}
 exports.deleteUser = function(req, res){
   var name = req.body.name;
 
